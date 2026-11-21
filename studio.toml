@@ -1,0 +1,9 @@
+# Studio Riff opening rules. All hours are UTC.
+
+[opening]
+opens_at = 10   # first possible start, full hour
+closes_at = 23  # every slot must end at or before this hour
+
+[slot]
+min_hours = 1
+max_hours = 4

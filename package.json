@@ -1,0 +1,29 @@
+{
+  "name": "studio-riff-ec4",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "start": "tsx src/main.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@hono/node-server": "1.19.9",
+    "@scalar/hono-api-reference": "0.12.17",
+    "@valibot/to-json-schema": "1.8.0",
+    "hono": "4.13.3",
+    "hono-openapi": "1.5.0",
+    "valibot": "1.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "tsx": "4.20.6",
+    "typescript": "5.9.3",
+    "vitest": "4.1.10"
+  }
+}
