@@ -42,7 +42,7 @@ describe('HTTP', () => {
 
   test('GET /rooms/:roomId/bookings rejects an unknown room', async () => {
     const res = await app().request('/rooms/room-9/bookings')
-    expect(res.status).toBe(400)
+    expect(res.status).toBe(404)
     expect(await errorCode(res)).toBe('ROOM_NOT_FOUND')
   })
 
@@ -56,7 +56,7 @@ describe('HTTP', () => {
 
   test('POST without the user header is refused', async () => {
     const res = await book({ start: '2026-11-04T18:00:00Z', end: '2026-11-04T19:00:00Z' }, {})
-    expect(res.status).toBe(403)
+    expect(res.status).toBe(401)
     expect(await errorCode(res)).toBe('UNAUTHENTICATED')
   })
 
