@@ -1,0 +1,3 @@
+strategy = "fixed-window"
+limit = 30
+windowMs = 60000
