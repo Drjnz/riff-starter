@@ -11,8 +11,9 @@ export function json(schema: v.GenericSchema, description: string) {
 }
 
 const errorDescriptions = {
-  400: 'Invalid input, slot rule violated, or unknown room or member',
-  403: `Missing ${FAKE_USER_ID_HEADER} header`,
+  400: 'Invalid input, slot rule violated, or unknown member',
+  401: `Missing ${FAKE_USER_ID_HEADER} header`,
+  404: 'Room not found',
   409: 'Slot overlaps an existing booking',
 } as const
 

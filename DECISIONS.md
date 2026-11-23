@@ -29,17 +29,19 @@ _Le contrat complet est dans `admin-openapi.yaml`. Ici, seulement le résumé et
 
 | Méthode | Chemin | Qui (clé) | Réponses |
 | ------- | ------ | --------- | -------- |
-| <…> | <…> | <…> | <…> |
+| GET | admin/rate-limit | Tresoriere | 200,401,403 |
+| PUT    |     admin/rate-limit| benevole    |     |
+| GET       | admin/rate-limit/history    | tresoriere    | 200,401,403    |
 
-- Forme d'une règle : <ce qu'on peut régler, avec un exemple de corps JSON>
-- Règle invalide : <ce qui est refusé, avec quel code et quel message>
+- Forme d'une règle : on peut regler la limite de la requête et le type d'authentification 
+- Règle invalide : tout ce qui est inérieur à  1 est  refusée. Le statuut http renvoyé est 400
 - Deux modifications au même moment : <ce qui se passe, et comment le client le sait>
 
 ## 4. Configuration `studio.toml`
 
-- Ce que le lecteur accepte : <…>
-- Ce qui empêche le démarrage : <…>
-- Comment les valeurs arrivent jusqu'au domaine sans qu'il sache qu'elles viennent d'un fichier : <…>
+- Ce que le lecteur accepte : des blocs [opening]&[slot] avec des valeurs pour les heures d'ouvertures et la durée
+- Ce qui empêche le démarrage : soit une valeur manquante, soit une valeuur invalide
+- Comment les valeurs arrivent jusqu'au domaine sans qu'il sache qu'elles viennent d'un fichier : 
 
 ## 5. ADR
 

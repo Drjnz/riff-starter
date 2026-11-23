@@ -46,7 +46,7 @@ export function roomRoutes(app: Hono<AppEnv>, useCases: RoomUseCases) {
       operationId: 'listRoomBookings',
       summary: 'List every booking of a room',
       parameters: fakeCallerHeaders,
-      responses: { 200: json(v.array(bookingDtoSchema), 'Bookings sorted by start'), ...errors(400) },
+      responses: { 200: json(v.array(bookingDtoSchema), 'Bookings sorted by start'), ...errors(400, 404) },
     }),
     validate('param', roomParamsSchema),
     async (c) => {
@@ -63,7 +63,7 @@ export function roomRoutes(app: Hono<AppEnv>, useCases: RoomUseCases) {
       operationId: 'listRoomBookingsBetween',
       summary: 'List the bookings of a room within [from, to)',
       parameters: fakeCallerHeaders,
-      responses: { 200: json(v.array(bookingDtoSchema), 'Bookings sorted by start'), ...errors(400) },
+      responses: { 200: json(v.array(bookingDtoSchema), 'Bookings sorted by start'), ...errors(400,404) },
     }),
     validate('param', bookingWindowParamsSchema),
     async (c) => {
@@ -81,7 +81,7 @@ export function roomRoutes(app: Hono<AppEnv>, useCases: RoomUseCases) {
       summary: 'Book a room for the calling member',
       description: 'Slot of 1 to 4 hours, starting on a full hour, within 10:00-23:00 UTC. The member is the caller.',
       parameters: fakeCallerHeaders,
-      responses: { 200: json(bookingDtoSchema, 'Booking created'), ...errors(400, 403, 409) },
+      responses: { 200: json(bookingDtoSchema, 'Booking created'), ...errors(400, 401, 404, 409) },
     }),
     validate('param', roomParamsSchema),
     validate('json', bookRoomBodySchema),
