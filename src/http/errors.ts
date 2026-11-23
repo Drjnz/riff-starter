@@ -21,8 +21,8 @@ type CodedError = Error & { readonly code: string }
 const statusByError: [abstract new (...args: never[]) => CodedError, ContentfulStatusCode][] = [
   [InvalidInput, 400],
   [InvalidSlot, 400],
-  [Unauthenticated, 403],
-  [RoomNotFound, 400],
+  [Unauthenticated, 401],
+  [RoomNotFound, 404],
   [UnknownMember, 400],
   [SlotTaken, 409],
 ]

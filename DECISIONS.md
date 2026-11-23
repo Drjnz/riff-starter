@@ -8,9 +8,9 @@ _Pour chaque incident, la règle de limitation qui l'aurait évité, et ce qu'el
 
 | Incident | Règle qui l'aurait évité | Ce qu'elle casse ailleurs |
 | -------- | ------------------------ | ------------------------- |
-| Lundi, le script qui guette les créneaux | <…> | <…> |
-| Mercredi, les six groupes sur le wifi du local | <…> | <…> |
-| Vendredi, le site de la salle partenaire | <…> | <…> |
+| Lundi, le script qui guette les créneaux | donner un nombre maximum de requête | <…> |
+| Mercredi, les six groupes sur le wifi du local | limiter le wifi local par groupr | un user peut changer de compte |
+| Vendredi, le site de la salle partenaire | appliquer un quota pour les partenaires | les quotas pourraient  être complexe à gérer |
 
 <Conclusion en deux ou trois phrases : ce que l'administration doit pouvoir régler, et pourquoi une seule règle fixe ne suffit pas.>
 
@@ -20,8 +20,8 @@ _Une ligne par défaut. N'y mettez pas les raccourcis voulus listés dans le REA
 
 | # | Où (fichier, route) | Le défaut | Pourquoi c'est un problème | Ce que vous changez | Commit |
 | - | ------------------- | --------- | -------------------------- | ------------------- | ------ |
-| D1 | <…> | <…> | <…> | <…> | <…> |
-| D2 | <…> | <…> | <…> | <…> | <…> |
+| D1 | src/http:errors.ts | absence authenfication renvoie 403 | le statut 403 ne correspond pas à l'absence d'authentification | nous changeons le statut 403 par 401 qui est bien plus adapté | modification du statut Unauthenticated & roomnotfound |
+| D2 | src/http/error.ts | Une salle non  trouvée renvoie le statut 400 | parce que le statut 400 correspond à une mauvaise requête | nous changeons paar le statut 404 qui correspond à une page non trouvée | // |
 
 ## 3. L'API d'administration
 
